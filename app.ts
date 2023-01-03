@@ -42,3 +42,29 @@ function addLength(str : string) {
 
 // Pascal's Triangle #2
 // https://www.codewars.com/kata/52945ce49bb38560fe0001d9
+// Pascal's Triangle #2
+// https://www.codewars.com/kata/52945ce49bb38560fe0001d9
+// Idea
+// Pascal triangle gets the next value from the immediate top value and and it's immediate left value. If none is available we use 0 except for thr first ever value which
+// 
+// 1  1
+// 1  [x]
+// [x] gets its value from the value at the top which is 1 and the value on the left of 1 which is 1 making x = 2
+function pascal(depth : number) {
+ let result : number[][]= [];
+//  Create a loop with the depth as the max number
+ for(let i = 0 ; i < depth ; i++){
+  let arr : number[]= [1];
+  let top = result[i - 1];
+  if(i > 0){
+    for (let j = 1 ; j <= i ; j++){
+      // top[j] is the immediate top top[j -1] is to the left of the immediate left
+      arr.push((top[j] ? top[j] : 0 ) + top[j - 1] );
+    }
+  }
+  result.push(arr);
+ }
+ return result;
+}
+
+// console.log(pascal(9));
